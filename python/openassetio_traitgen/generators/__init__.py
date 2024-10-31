@@ -62,6 +62,7 @@ Each generator has a single entry point as shown below:
 from . import helpers
 from . import python
 from . import cpp
+from . import markdown
 
 # All known language generators
-ALL = ("python", "cpp")
+ALL = ("python", "cpp", "markdown")

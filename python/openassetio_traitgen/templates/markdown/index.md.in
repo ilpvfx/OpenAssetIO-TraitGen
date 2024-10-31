@@ -1,0 +1,16 @@
+# Index of Traits and Specifications
+## Traits
+{% for namespace in trait_namespaces %}
+- {{ namespace.id | title}}
+{% for trait in namespace.members %}
+    - {{ trait.name }} Trait
+{% endfor %}
+{% endfor %}
+
+## Specifications
+{% for namespace in specification_namespaces %}
+- {{ namespace.id | title}}
+{% for specification in namespace.members %}
+    - {{ specification.id }} Specification
+{% endfor %}
+{% endfor %}
