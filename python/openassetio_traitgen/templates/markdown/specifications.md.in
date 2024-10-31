@@ -1,0 +1,19 @@
+{% for namespace in namespaces %}
+# {{ namespace.id[0] | upper }}{{ namespace.id[1:] }}
+{{ namespace.description | cleanup_md_string }}
+
+{% for specification in namespace.members %}
+## {{ specification.id }} Specification
+{% if specification.usage %}
+**Usage:** {{ specification.usage | join(', ') }}
+{% endif %}
+
+### Description
+{{ specification.description | cleanup_md_string }}
+
+### Trait Set
+{% for trait in specification.trait_set %}
+- {{ trait.namespace }}.{{ trait.name }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
