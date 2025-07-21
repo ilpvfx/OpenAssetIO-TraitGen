@@ -1,0 +1,24 @@
+{% for namespace in namespaces %}
+# {{ namespace.id[0] | upper }}{{ namespace.id[1:] }}
+{{ namespace.description | cleanup_md_string}}
+
+{% for trait in namespace.members %}
+## {{ trait.name }} Trait
+**kId:** {{ trait.id }}
+{% if trait.usage -%}
+<br>**Usage:** {{ trait.usage | join(', ') }}
+{% endif %}
+
+### Description
+{{ trait.description | cleanup_md_string }}
+
+{% if trait.properties %}
+### Properties
+{% for property in trait.properties %}
+**{{ property.id }} ({{ property.type | to_type_pretty_name }})**
+<br>{{ property.description | cleanup_md_string }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% endfor %}
